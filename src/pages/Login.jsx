@@ -1,4 +1,4 @@
-import React, { useState, useReducer } from "react";
+import React, { useState, useEffect, useReducer } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 
@@ -67,6 +67,13 @@ export default function Login() {
       }, 2000);
     }
   }
+
+  useEffect(() => {
+    const t = localStorage.getItem("token");
+    if (t) {
+      navigate("/profile");
+    }
+  }, []);
 
   return (
     <>
